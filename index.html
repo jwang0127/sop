@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#17374a"><meta name="description" content="财务 BP 通用知识库：从月度节奏、平台取数到核算、经营分析和滚动预测的完整 SOP。">
+  <title>财务 BP 工作手册 · SOP 全景</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="返回首页"><span class="brandmark">BP<span class="markdot">.</span></span><span class="brandtext">财务工作手册 <small>OPERATING MANUAL</small></span></a>
+    <button class="mobile-menu" id="menuBtn" aria-label="打开目录" aria-expanded="false">目录</button>
+    <div class="topmeta">从数据到决策 <span class="topdivider"></span> <span id="docCount">文档加载中</span></div>
+  </header>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar" aria-label="文档目录">
+      <div class="sidebar-head"><span>查找 SOP</span><kbd>/</kbd></div>
+      <label class="search-wrap"><span class="sr-only">搜索文档</span><input id="search" type="search" placeholder="搜索流程、平台、口径…" autocomplete="off"><span class="search-icon">⌕</span></label>
+      <nav class="side-nav" id="sideNav"></nav>
+      <div class="side-foot">原始文档完整收录<br>按工作步骤查找，按标题快速定位</div>
+    </aside>
+    <main id="main">
+      <section id="homeView" class="home-view">
+        <div class="hero"><div class="hero-kicker">财务 BP / 工作路径总览</div><h1>先把数做对，<br>再把事说清。</h1><p>一套从取数、核算、分析到行动跟踪的实务流程。按下面的路径进入，或直接在左侧查找具体平台与口径。</p><div class="hero-actions"><button class="primary-btn" data-open="01_工作节奏/月度工作节奏.md">从月度节奏开始 <span>↗</span></button><button class="text-btn" data-open="00_首页与导航/首页.md">查看原始导航 →</button></div></div>
+        <div class="section-label"><span>01 / 主流程</span><span>每一步都有可追溯的产出</span></div>
+        <div class="process" id="process"></div>
+        <div class="section-label mid"><span>02 / 关口与返工</span><span>有异常，先回到数据与口径</span></div>
+        <div class="gate-grid">
+          <div class="gate-intro"><span class="eyebrow">关键判断</span><h2>向前推进前，<br>先过四道关。</h2><p>流程不是只往右走。任何一步发现缺数、口径变化或无法解释的波动，都要留下依据并返回相应环节。</p></div>
+          <div class="gate-list">
+            <button data-open="02_数据源与取数/取数质量检查清单.md"><b>01</b><span><strong>数据齐不齐</strong><small>期间、店铺、字段、重复与缺失</small></span><i>↗</i></button>
+            <button data-open="03_财报核算/核算勾稽检查.md"><b>02</b><span><strong>账能不能对上</strong><small>收入、退款、成本、费用的交叉核对</small></span><i>↗</i></button>
+            <button data-open="03_财报核算/异常波动检查.md"><b>03</b><span><strong>波动能否解释</strong><small>金额、期间、结构与一次性事项</small></span><i>↗</i></button>
+            <button data-open="06_异常事项处理/数据口径变更处理.md"><b>04</b><span><strong>口径有没有变</strong><small>影响测算、历史重述与披露</small></span><i>↗</i></button>
+          </div>
+        </div>
+        <div class="section-label mid"><span>03 / 按任务进入</span><span>常用工作台</span></div>
+        <div class="shortcut-grid">
+          <button data-open="01_工作节奏/月初财报核算工作台.md"><span>月初</span><strong>出财报</strong><small>取数 → 核算 → 勾稽 → 核对版</small><i>↗</i></button>
+          <button data-open="04_经营分析/经营分析报告工作台.md"><span>月初至月中</span><strong>写经营分析</strong><small>差异 → 原因 → 动作 → 跟踪</small><i>↗</i></button>
+          <button data-open="05_预算与预测/预算与滚动预测工作台.md"><span>月中至月末</span><strong>更新预测</strong><small>实际数 → 假设 → 全年差距</small><i>↗</i></button>
+          <button data-open="09_电商财务BP专题/电商财务BP专题导航.md"><span>专题</span><strong>电商 BP</strong><small>结算、投放、渠道效率与费用</small><i>↗</i></button>
+        </div>
+        <footer class="home-footer">依据《财务BP通用知识库》整理 · 点击任一步骤查看原始 SOP 全文</footer>
+      </section>
+      <section id="readerView" class="reader-view" hidden><div class="reader-top"><button id="backBtn" class="back-btn">← 返回总览</button><span id="breadcrumb"></span></div><article id="article" class="article"></article><div class="reader-bottom"><span>文档之间可通过正文链接继续浏览</span><button id="topBtn">回到顶部 ↑</button></div></section>
+      <section id="resultsView" class="results-view" hidden><div class="results-head"><span class="eyebrow">文档检索</span><h1 id="resultsTitle">搜索结果</h1><p id="resultsMeta"></p></div><div id="resultsList" class="results-list"></div></section>
+    </main>
+  </div>
+  <script src="app.js" defer></script>
+</body>
+</html>
