@@ -10,7 +10,7 @@ from pathlib import Path
 
 import markdown
 
-ROOT = Path(sys.argv[1]) if len(sys.argv) > 1 else None
+ROOT = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parent / 'content'
 if not ROOT or not ROOT.is_dir():
     raise SystemExit('Pass the knowledge base directory to build.py')
 OUT = Path(__file__).parent
@@ -42,8 +42,20 @@ for p in files:
     raw = re.sub(r'\[\[([^\]]+)\]\]', wikilink, raw)
     rendered = markdown.markdown(raw, extensions=['tables', 'fenced_code', 'toc'])
     excerpt = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', rendered)).strip()[:155]
+    if number == '94':
+        status = '外部资料'
+    elif number == '90' or '模板' in p.stem or p.stem in {'数据源登记表', '口径变更记录', '决策与待办跟踪'}:
+        status = '填写模板'
+    elif p.stem in {'美团优选取数SOP', '微信视频号取数SOP'}:
+        status = '路径待补'
+    elif p.stem in {'快手取数SOP', '拼多多取数SOP', '掌上大学取数SOP'}:
+        status = '部分待补'
+    elif number == '02' and p.stem.endswith('取数SOP') and p.stem != '平台取数通用SOP':
+        status = '路径需核对'
+    else:
+        status = '工作方法'
     docs.append({'id': rel, 'title': p.stem, 'group': number,
-                 'html': rendered, 'excerpt': html.unescape(excerpt),
+                 'status': status, 'html': rendered, 'excerpt': html.unescape(excerpt),
                  'search': re.sub(r'<[^>]+>', ' ', rendered)})
 
 (OUT / 'docs.json').write_text(json.dumps(docs, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
