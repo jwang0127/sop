@@ -33,4 +33,4 @@ function setup(){
  document.addEventListener('keydown',e=>{if(e.key==='/'&&!/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();$('#search').focus();$('#sidebar').classList.add('open');}if(e.key==='Escape'){$('#search').blur();closeMenu();}});
  window.addEventListener('hashchange',route);route();
 }
-fetch('docs.json').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(data=>{docs=data;setup()}).catch(()=>{$('#docCount').textContent='文档加载失败';$('#process').innerHTML='<p>文档加载失败。请通过 HTTP 服务打开站点，或刷新页面重试。</p>';});
+fetch('docs.json?v=20261110-audit').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(data=>{docs=data;setup()}).catch(()=>{$('#docCount').textContent='文档加载失败';$('#process').innerHTML='<p>文档加载失败。请通过 HTTP 服务打开站点，或刷新页面重试。</p>';});
